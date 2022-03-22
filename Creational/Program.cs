@@ -1,4 +1,5 @@
-﻿using DesignPatternDojo.Creational.SimpleFactory;
+﻿using DesignPatternDojo.Creational.Factory;
+using DesignPatternDojo.Creational.SimpleFactory;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,25 +12,48 @@ namespace DesignPatternDojo.Creational
     {
         static void Main(string[] args)
         {
+            // Abstract Factory - Creates an instance of several families of classes
+            // Builder - Separates object construction from its representation
+            // Factory Method - Creates an instance of several derived classes
+            // Prototype - A fully initialized instance to be copied or cloned
+            // Singleton - A class of which only a single instance can exist
+
+
             SimpleFactory();
 
             Console.ReadKey();
         }
 
-        // SimpleFactory 簡單工廠模式
-        // 透過同一個方法傳入不同參數，獲得不同的衍生類別
-        // reference : https://dotblogs.com.tw/joysdw12/2013/06/23/design-pattern-simple-factory-pattern
+
         public static void SimpleFactory()
         {
+            // SimpleFactory 簡單工廠模式
+            // 透過同一個方法傳入不同參數，獲得不同的衍生類別
+            // reference : https://dotblogs.com.tw/joysdw12/2013/06/23/design-pattern-simple-factory-pattern
+
             // 告訴工廠要做飲料 BlackTea，得到BlackTea 的衍生類別
             var beverage = SimpleBeverageFactory.CreateBeverage("BlackTea");
             // 裝原料
-            beverage.AddMaterial(); 
+            beverage.AddMaterial();
             // 烹煮
             beverage.Brew();
             // 裝杯
             beverage.PouredCup();
+        }
 
+        public static void FactoryMethod()
+        {
+            // Factory Method 工廠模式
+            // 定義一個工廠物件作為介面，透過不同的子類別實作
+
+            // 文件有很多種，假設目前有兩種：履歷 以及 報告
+            var documents = new List<Document> { new Resume(), new Report() };
+            foreach(var document in documents)
+            {
+                Console.WriteLine($"{document.GetType().Name}--");
+                foreach(var page in document.Pages)
+                    Console.WriteLine($"{page.GetType().Name}");
+            }
         }
     }
 }
