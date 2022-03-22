@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27703.2035
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31410.357
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Behavioral", "Behavioral\Behavioral.csproj", "{C61296CB-51FD-495B-906F-70401BF59B50}"
 EndProject
@@ -10,6 +10,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{432A9443-B5F6-46E0-894C-AF4EFA05FD0C}"
 	ProjectSection(SolutionItems) = preProject
 		DesignPattern.txt = DesignPattern.txt
+		readme.md = readme.md
 	EndProjectSection
 EndProject
 Global

@@ -17,6 +17,8 @@ namespace DesignPatternDojo.Behavioral
         }
 
         // Strategy 策略模式 https://www.dofactory.com/net/strategy-design-pattern
+        // 一個事情(Method)用一些固定的邏輯(介面)、演算法，取得一個結果，依據狀況 切換不同的處理方法(類別實作介面方法)
+
         // 策略模式可以說是：一個類別(Context)使用一種行為(Action)，而這個行為會有不同種的動作(ConcreteAction)，
         // 在不同的場景，這個類別可以依據情況對於自己的同一個行為(Action)，選用不同的動作(ConcreteAction)。
 
