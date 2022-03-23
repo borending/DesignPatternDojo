@@ -19,8 +19,8 @@ namespace DesignPatternDojo.Creational
             // Singleton - A class of which only a single instance can exist
 
 
-            SimpleFactory();
-
+            //SimpleFactory();
+            FactoryMethod();
             Console.ReadKey();
         }
 
@@ -46,8 +46,12 @@ namespace DesignPatternDojo.Creational
             // Factory Method 工廠模式
             // 定義一個工廠物件作為介面，透過不同的子類別實作
 
-            // 文件有很多種，假設目前有兩種：履歷 以及 報告
+            // 先定義抽象的Creator 跟Product，規範屬性及方法
+            // 再各自定義具體的Creator 跟Product實作
+
+            // 文件有很多種，假設目前有兩種：履歷 以及 報告 為具體Creator
             var documents = new List<Document> { new Resume(), new Report() };
+
             foreach(var document in documents)
             {
                 Console.WriteLine($"{document.GetType().Name}--");
