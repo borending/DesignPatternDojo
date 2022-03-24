@@ -28,7 +28,7 @@ namespace DesignPatternDojo.Creational
         public static void SimpleFactory()
         {
             // SimpleFactory 簡單工廠模式
-            // 透過同一個方法傳入不同參數，獲得不同的衍生類別
+            // 只有一個具體的Factory，透過傳入不同參數，實體化各種"實作抽象介面Product 的ConcreteProduct"
             // reference : https://dotblogs.com.tw/joysdw12/2013/06/23/design-pattern-simple-factory-pattern
 
             // 告訴工廠要做飲料 BlackTea，得到BlackTea 的衍生類別
