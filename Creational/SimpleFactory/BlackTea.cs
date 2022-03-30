@@ -10,17 +10,18 @@ namespace DesignPatternDojo.Creational.SimpleFactory
     {
         public void AddMaterial()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("裝原料:加入茶葉");
         }
 
         public void Brew()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("烹煮:加入熱水");
         }
 
         public void PouredCup()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("裝杯:加入冰塊");
+            Console.WriteLine("裝杯:倒入玻璃杯");
         }
     }
 }
