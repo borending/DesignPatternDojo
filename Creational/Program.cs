@@ -5,24 +5,51 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Threading.Tasks;
+using System.Timers;
 
 namespace DesignPatternDojo.Creational
 {
     class Program
     {
-        static void Main(string[] args)
+        private static void OnTimedEvent(Object source, ElapsedEventArgs e)
         {
-            // Factory Method - Creates an instance of several derived classes
+            Console.Beep();
+        }
 
-            // Abstract Factory - Creates an instance of several families of classes
+        static void Main3(string[] args)
+        {
+            while (true)
+            {
+                Console.Write("請輸入倒數時間：");
+                var line = Console.ReadLine();
+                Console.WriteLine("倒數開始");
+                switch (line)
+                {
+                    case "3":
+                        Thread.Sleep(1000 * 60 * 3);
+                        break;
+                    case "6":
+                        Thread.Sleep(1000 * 60 * 6);
+                        break;
+                }
+                Console.Beep();
+                Console.WriteLine("倒數結束");
+                Console.WriteLine("------------------------------------------");
+            }
+        }
+
+        static void Main2(string[] args)
+        {
             // Builder - Separates object construction from its representation
             // Prototype - A fully initialized instance to be copied or cloned
             // Singleton - A class of which only a single instance can exist
 
-
             Console.WriteLine($"1. SimpleFactory");
             Console.WriteLine($"2. FactoryMethod");
+            Console.WriteLine($"3. Abstract Factory");
+            Console.WriteLine($"4. Singleton");
 
             string number = "";
             // 重新輸入：空的或有其他字元
@@ -33,26 +60,33 @@ namespace DesignPatternDojo.Creational
             }
 
             var intNumber = Convert.ToInt32(number);
+            var program = new Program();
             switch (intNumber)
             {
                 case 1:
-                    SimpleFactory();
+                    program.SimpleFactory();
                     break;
                 case 2:
-                    FactoryMethod();
+                    program.FactoryMethod();
+                    break;
+                case 3:
+                    program.AbstractFactory();
+                    break;
+                case 4:
+                    program.Singleton();
                     break;
             }
+
             Console.ReadKey();
         }
 
-
-        public static void SimpleFactory()
+        public void SimpleFactory()
         {
             // SimpleFactory 簡單工廠模式
             // 應用場景：只用一個Factory，就可以產生不同實體的產品ConcreteProduct
+            // reference : https://skyyen999.gitbooks.io/-study-design-pattern-in-java/content/simpleFactory.html
 
             // 有多個產品Product，所以把Product 抽象化，透過傳入不同參數，實體化各種"實作抽象介面Product 的ConcreteProduct"
-            // reference : https://dotblogs.com.tw/joysdw12/2013/06/23/design-pattern-simple-factory-pattern
 
             // 告訴工廠要做飲料 BlackTea，得到BlackTea 的衍生類別
             var beverage = SimpleBeverageFactory.CreateBeverage("BlackTea");
@@ -64,10 +98,13 @@ namespace DesignPatternDojo.Creational
             beverage.PouredCup();
         }
 
-        public static void FactoryMethod()
+        public void FactoryMethod()
         {
-            // Factory Method 工廠模式
-            // 應用場景：不同實體的產品ConcreteProduct，需要用不同的工廠ConcreteFactory
+            // Factory Method 工廠模式，使用頻率：高
+            // 應用場景：用不同的工廠ConcreteFactory，產生不同實體的產品ConcreteProduct
+            // reference :
+            // https://skyyen999.gitbooks.io/-study-design-pattern-in-java/content/factory.html
+            // https://www.dofactory.com/net/factory-method-design-pattern
 
             // 定義一個工廠物件作為介面，透過不同的子類別實作
             // 先定義抽象的Creator 跟Product，規範屬性及方法
@@ -81,6 +118,31 @@ namespace DesignPatternDojo.Creational
                 foreach (var page in document.Pages)
                     Console.WriteLine($"{page.GetType().Name}");
             }
+        }
+
+        public void AbstractFactory()
+        {
+            // Abstract Factory 抽象工廠模式
+            // 應用場景：不同的工廠ConcreteFactory，產生多種Product 的實體化的產品ConcreteProduct
+            // reference : https://skyyen999.gitbooks.io/-study-design-pattern-in-java/content/abstractFactory1.html
+
+            // todo
+        }
+
+        public void Singleton()
+        {
+            // Singleton 單例模式，使用頻率：中高
+            // 應用場景：只創造一個實體，且同時只能有一個實體存在
+            // https://ithelp.ithome.com.tw/articles/10230064
+
+            // C#: lock Lazy sealed
+
+
+            // https://www.dofactory.com/net/singleton-design-pattern
+
+            // thread-safe issue
+            // https://ithelp.ithome.com.tw/articles/10196899
+            // https://riptutorial.com/design-patterns/example/21713/csharp-example--multithreaded-singleton
         }
     }
 }
