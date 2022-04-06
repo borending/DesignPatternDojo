@@ -10,28 +10,6 @@ namespace DesignPatternDojo.Creational
 {
     class Program
     {
-        static void Main3(string[] args)
-        {
-            while (true)
-            {
-                Console.Write("請輸入倒數時間：");
-                var line = Console.ReadLine();
-                Console.WriteLine("倒數開始");
-                switch (line)
-                {
-                    case "3":
-                        Thread.Sleep(1000 * 60 * 3);
-                        break;
-                    case "6":
-                        Thread.Sleep(1000 * 60 * 6);
-                        break;
-                }
-                Console.Beep();
-                Console.WriteLine("倒數結束");
-                Console.WriteLine("------------------------------------------");
-            }
-        }
-
         static void Main(string[] args)
         {
             // Builder - Separates object construction from its representation - 中低
