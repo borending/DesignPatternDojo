@@ -52,16 +52,16 @@ ViewModel.Build 就是依賴反轉
 // todo:
 
 
-根據統計，最常用的設計模式為下(不分比例)：
-1. Creational/Singleton
-2. Decorator
-3. Command  
-4. Factory ( Action Mapping )
-5. The Observer ( Event Listener )
-6. Strategy
-7. Builder
-8. Adapter ( asList , toString )
-9. State
+根據統計，最常用的設計模式為下：
+1. Singleton 中高 v
+2. Decorator 中
+3. Command 中高 
+4. Factory ( Action Mapping ) 高 v
+5. Observer ( Event Listener ) 高
+6. Strategy 高 v
+7. Builder 中低
+8. Adapter ( asList , toString ) 中高
+9. State 中
 
 References:
 https://learningdaily.dev/the-7-most-important-software-design-patterns-d60e546afb0e?gi=45b79806400a

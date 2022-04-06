@@ -108,8 +108,6 @@ namespace DesignPatternDojo.Creational
             // https://www.dofactory.com/net/singleton-design-pattern
             // https://ithelp.ithome.com.tw/articles/10230064
 
-            // todo C#: Lazy
-
             var b1 = LoadBalancer.GetLoadBalancer();
             var b2 = LoadBalancer.GetLoadBalancer();
             var b3 = LoadBalancer.GetLoadBalancer();
