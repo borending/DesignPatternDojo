@@ -53,6 +53,7 @@
     <Compile Include="SimpleFactory\BlackTea.cs" />
     <Compile Include="SimpleFactory\Coffee.cs" />
     <Compile Include="SimpleFactory\IBeverageProvide.cs" />
+    <Compile Include="Singleton\LoadBalancer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

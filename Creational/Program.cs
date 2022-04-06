@@ -1,23 +1,15 @@
 ﻿using DesignPatternDojo.Creational.Factory;
 using DesignPatternDojo.Creational.SimpleFactory;
+using DesignPatternDojo.Creational.Singleton;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
-using System.Threading.Tasks;
-using System.Timers;
 
 namespace DesignPatternDojo.Creational
 {
     class Program
     {
-        private static void OnTimedEvent(Object source, ElapsedEventArgs e)
-        {
-            Console.Beep();
-        }
-
         static void Main3(string[] args)
         {
             while (true)
@@ -40,16 +32,17 @@ namespace DesignPatternDojo.Creational
             }
         }
 
-        static void Main2(string[] args)
+        static void Main(string[] args)
         {
-            // Builder - Separates object construction from its representation
-            // Prototype - A fully initialized instance to be copied or cloned
-            // Singleton - A class of which only a single instance can exist
+            // Builder - Separates object construction from its representation - 中低
+            // Prototype - A fully initialized instance to be copied or cloned - 中
 
-            Console.WriteLine($"1. SimpleFactory");
-            Console.WriteLine($"2. FactoryMethod");
-            Console.WriteLine($"3. Abstract Factory");
-            Console.WriteLine($"4. Singleton");
+            Console.WriteLine($"1. SimpleFactory (使用頻率：高)");
+            Console.WriteLine($"2. FactoryMethod (使用頻率：高)");
+            Console.WriteLine($"3. Abstract Factory (使用頻率：高)");
+            Console.WriteLine($"4. Singleton (使用頻率：中高)");
+
+            Console.WriteLine();
 
             string number = "";
             // 重新輸入：空的或有其他字元
@@ -100,7 +93,7 @@ namespace DesignPatternDojo.Creational
 
         public void FactoryMethod()
         {
-            // Factory Method 工廠模式，使用頻率：高
+            // Factory Method 工廠模式
             // 應用場景：用不同的工廠ConcreteFactory，產生不同實體的產品ConcreteProduct
             // reference :
             // https://skyyen999.gitbooks.io/-study-design-pattern-in-java/content/factory.html
@@ -131,14 +124,28 @@ namespace DesignPatternDojo.Creational
 
         public void Singleton()
         {
-            // Singleton 單例模式，使用頻率：中高
+            // Singleton 單例模式
             // 應用場景：只創造一個實體，且同時只能有一個實體存在
+            // reference : 
+            // https://www.dofactory.com/net/singleton-design-pattern
             // https://ithelp.ithome.com.tw/articles/10230064
 
-            // C#: lock Lazy sealed
+            // todo C#: Lazy
 
+            var b1 = LoadBalancer.GetLoadBalancer();
+            var b2 = LoadBalancer.GetLoadBalancer();
+            var b3 = LoadBalancer.GetLoadBalancer();
+            var b4 = LoadBalancer.GetLoadBalancer();
+            if (b1 == b2 && b2 == b3 && b3 == b4)
+                Console.WriteLine("實體相同");
 
-            // https://www.dofactory.com/net/singleton-design-pattern
+            // 模擬15 個Request ，分別連線到的哪一個Server
+            var balancer = LoadBalancer.GetLoadBalancer();
+            for (int i = 0; i < 15; i++)
+            {
+                var server = balancer.NextServer;
+                Console.WriteLine($"Request {i + 1:00} 連線至IP: {server.IP:-16} - {server.Name:-9}");
+            }
 
             // thread-safe issue
             // https://ithelp.ithome.com.tw/articles/10196899
