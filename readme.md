@@ -45,12 +45,12 @@ Overloaded 要用不同介面去區分
 ViewModel.Build 就是依賴反轉
 
 ## 設計模式 Design Patterns
-基本概念就是繼承封裝
-抽象的概念定義成介面，這邊指的介面不是修飾詞的 interface，是指定義各種方法屬性的抽象(abstract) 父類別，達到封裝。
-具體的細節，定義不同子類別進行繼承、各自複寫(override) 實作。
-例如：
-// todo:
-
+結合了各種物件導向 SOLID設計心法，而產生的設計規範
+主要可以分為三大類：
+1. 創建型模式 Creational
+2. 結構型模式 Structural
+3. 行為型模式 Behavioral
+很明顯的，從各自的命名可以推測出使用的場景
 
 根據統計，最常用的設計模式為下：
 1. Singleton 中高 v
